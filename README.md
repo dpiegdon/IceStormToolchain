@@ -11,4 +11,6 @@ Documentation and related links:
 * basic howto video by eevidtron: https://www.youtube.com/watch?v=yUiNlmvVOq8
 * Lattice iCEstick Evaluation Kit: http://www.latticesemi.com/icestick
 * Lattice iCE40 LP/HX Family Datasheet: http://www.latticesemi.com/~/media/LatticeSemi/Documents/DataSheets/iCE/iCE40LPHXFamilyDataSheet.pdf
+* generic PCF files for icestick: https://raw.githubusercontent.com/wd5gnr/icestick/master/icestickfull.pcf  https://github.com/cyrozap/iCEstick-UART-Demo/blob/master/icestick.pcf
+* pinout: http://www.pighixxx.com/test/portfolio-items/icestick/
 

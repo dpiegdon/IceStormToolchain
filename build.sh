@@ -6,7 +6,7 @@ for EACH in	make automake gcc g++ clang bison flex gawk git \
 		hg dot xdot pkg-config python python3; do
 	which $EACH > /dev/null 2>&1 || {
 		echo "you need to install tool: $EACH"
-		let missing++
+		missing=$((missing+1))
 	}
 done
 
@@ -20,7 +20,7 @@ done
 
 # build toolchains
 THREADS=`grep '^processor' /proc/cpuinfo|wc -l`
-let THREADS--
+THREADS=$((THREADS-1))
 
 export PREFIX=`pwd`/build
 

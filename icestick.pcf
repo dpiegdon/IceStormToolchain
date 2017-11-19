@@ -4,8 +4,17 @@
 
 # ##############################################################################
 
-# This is the version that you don't have to uncomment
-# things you don't use. Requires a recent version of arachne
+# Using this version you don't have to uncomment things you don't use.
+# Requires a recent version of arachne.
+
+# Please NOTE: The iCEStick does not have any global buffer outputs (GB_IO)
+# available on pin headers!
+# Global buffer pins would be:
+#    20, 21, 49, 50, 93, 94, 128 and 129
+# Only 21 is used, and connected to the fixed 12MHz clock input.
+# It should be possible to solder a wire onto one of the tq144 pins.
+# The alternative is to use a standard pin (IO) and
+# to route this in the fabric into one of the internal global buffers (GB).
 
 # Clock
 set_io --warn-no-port clk 21   # 12 MHz clock

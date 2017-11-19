@@ -21,6 +21,9 @@ done
 # build toolchains
 THREADS=`grep '^processor' /proc/cpuinfo|wc -l`
 THREADS=$((THREADS-1))
+if [ $THREADS -lt 1 ]; then
+	THREADS=1
+fi
 
 export PREFIX=`pwd`/build
 

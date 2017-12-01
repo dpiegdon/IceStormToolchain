@@ -46,12 +46,10 @@ make -j "$THREADS" -C icestorm install && {
 	make -j "$THREADS" -C arachne-pnr install && {
 		make -j "$THREADS" -C yosys install && {
 			echo ""
-			echo "build successful"
+			echo -e "\033[1;32mbuild successful\033[m"
+			echo ""
 		}
 	}
 }
 
-echo ""
-echo -e "\033[1;32mbuild finished.\033[m"
-echo ""
 

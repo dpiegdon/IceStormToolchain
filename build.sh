@@ -2,6 +2,7 @@
 
 # make sure all tools are installed
 missing=0
+
 for EACH in	make automake gcc g++ clang bison flex gawk git \
 		hg dot xdot pkg-config python python3; do
 	which $EACH > /dev/null 2>&1 || {
@@ -10,13 +11,25 @@ for EACH in	make automake gcc g++ clang bison flex gawk git \
 	}
 done
 
+PACKAGES="libreadline-dev tcl-dev libffi-dev libftdi1-dev"
+if which apt-cache > /dev/null; then
+	for PKG in $PACKAGES; do
+		if apt-cache policy $PKG | grep 'Installed: (none)' > /dev/null; then
+			echo "you need to install package: $PKG"
+			missing=$((missing+1))
+		fi
+	done;
+else
+	echo "------------------------------------------------------------------"
+	echo "you need to manually verify that the following packages"
+	echo "(or equivalents) are installed:"
+	echo "    $PACKAGES"
+	echo "------------------------------------------------------------------"
+fi
+
 [ 0 -eq $missing ] || exit 1
 
-# TODO to be checked:
-# * libreadline-dev
-# * tcl-dev
-# * libffi-dev
-# * libftdi-dev
+
 
 # build toolchains
 THREADS=`grep '^processor' /proc/cpuinfo|wc -l`

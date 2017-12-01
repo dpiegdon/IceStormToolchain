@@ -6,25 +6,27 @@ missing=0
 for EACH in	make automake gcc g++ clang bison flex gawk git \
 		hg dot xdot pkg-config python python3; do
 	which $EACH > /dev/null 2>&1 || {
-		echo "you need to install tool: $EACH"
+		echo -e "\033[1;31myou need to install tool: $EACH\033[m"
 		missing=$((missing+1))
 	}
 done
 
 PACKAGES="libreadline-dev tcl-dev libffi-dev libftdi1-dev"
-if which apt-cache > /dev/null; then
+if which apt-cache > /dev/null 2>&1; then
 	for PKG in $PACKAGES; do
 		if apt-cache policy $PKG | grep 'Installed: (none)' > /dev/null; then
-			echo "you need to install package: $PKG"
+			echo -e "\033[1;31myou need to install package: $PKG\033[m"
 			missing=$((missing+1))
 		fi
 	done;
 else
+	echo ""
 	echo "------------------------------------------------------------------"
 	echo "you need to manually verify that the following packages"
 	echo "(or equivalents) are installed:"
-	echo "    $PACKAGES"
+	echo -e "\033[1;33m$PACKAGES\033[m"
 	echo "------------------------------------------------------------------"
+	echo ""
 fi
 
 [ 0 -eq $missing ] || exit 1
@@ -48,4 +50,8 @@ make -j "$THREADS" -C icestorm install && {
 		}
 	}
 }
+
+echo ""
+echo -e "\033[1;32mbuild finished.\033[m"
+echo ""
 

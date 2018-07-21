@@ -6,6 +6,15 @@ For my personal convenience, this repo contains submodules for:
 * `https://github.com/cseed/arachne-pnr.git`
 * `https://github.com/cliffordwolf/yosys.git`
 
+Other tools one might want to install:
+
+* gtkwave
+* iverilog
+
+Alternatives to this repo:
+
+* apio - https://github.com/FPGAwars/apio
+
 Documentation and related links:
 
 * yosys manual: `http://www.clifford.at/yosys/files/yosys_manual.pdf`

@@ -1,1 +1,5 @@
 these have been copied from https://github.com/tinyfpga/TinyFPGA-BX/tree/master/icestorm_template
+
+for arachne-pnr: `-d 8k -P cm81`
+for icetime: `-d lp8k`
+

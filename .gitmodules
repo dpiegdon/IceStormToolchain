@@ -3,10 +3,10 @@
 	url = https://github.com/cliffordwolf/icestorm.git
 [submodule "arachne-pnr"]
 	path = arachne-pnr
-	url = https://github.com/cseed/arachne-pnr.git
+	url = https://github.com/YosysHQ/arachne-pnr.git
 [submodule "yosys"]
 	path = yosys
-	url = https://github.com/cliffordwolf/yosys.git
+	url = https://github.com/YosysHQ/yosys.git
 [submodule "nextpnr"]
 	path = nextpnr
 	url = https://github.com/YosysHQ/nextpnr

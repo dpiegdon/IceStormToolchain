@@ -46,7 +46,7 @@ make -j "$THREADS" -C icestorm install && {
 make -j "$THREADS" -C arachne-pnr install && {
 make -j "$THREADS" -C yosys install && {
 ( cd prjtrellis/libtrellis && cmake -DCMAKE_INSTALL_PREFIX="$PREFIX" . && make -j "$THREADS" install ) && {
-( cd nextpnr && cmake -DICEBOX_ROOT="$PREFIX/share/icebox/" -DTRELLIS_ROOT="$PREFIX/share/trellis/" -DCMAKE_INSTALL_PREFIX="$PREFIX" -DARCH=all . && make -j "$THREADS" install ) && {
+( cd nextpnr && cmake -DICEBOX_ROOT="$PREFIX/share/icebox/" -DTRELLIS_ROOT="$PREFIX/share/trellis/" -DTRELLIS_LIBDIR="$PREFIX/lib64/trellis" -DCMAKE_INSTALL_PREFIX="$PREFIX" -DARCH=all . && make -j "$THREADS" install ) && {
 	/bin/echo ""
 	/bin/echo -e "\033[1;32mbuild successful\033[m"
 	/bin/echo ""

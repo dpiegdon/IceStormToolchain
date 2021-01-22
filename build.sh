@@ -42,18 +42,37 @@ fi
 
 export PREFIX=`pwd`/build
 
-make -j "$THREADS" -C icestorm install && {
-make -j "$THREADS" -C arachne-pnr install && {
-make -j "$THREADS" -C yosys install && {
-( cd prjtrellis/libtrellis && cmake -DCMAKE_INSTALL_PREFIX="$PREFIX" . && make -j "$THREADS" install ) && {
-set -x
+set -e
+
+(
+	make -j "$THREADS" -C icestorm install
+)
 ICEBOX="$PREFIX/share/icebox/"
+
+(
+	make -j "$THREADS" -C arachne-pnr install
+)
+
+(
+	make -j "$THREADS" -C yosys install
+)
+
+(
+	cd prjtrellis/libtrellis
+	cmake -DCMAKE_INSTALL_PREFIX="$PREFIX" .
+	make -j "$THREADS" install
+)
 TRELLIS="$PREFIX/share/trellis/"
 TRELLIS_LIB="$PREFIX/lib/trellis"
-[ -d $TRELLIS_LIB ] || TRELLIS_LIB="$PREFIX/lib64/trellis"
-( cd nextpnr && cmake -DICEBOX_ROOT="$ICEBOX" -DTRELLIS_ROOT="$TRELLIS" -DTRELLIS_LIBDIR="$TRELLIS_LIB" -DCMAKE_INSTALL_PREFIX="$PREFIX" -DARCH=all . && make -j "$THREADS" install ) && {
-	/bin/echo ""
-	/bin/echo -e "\033[1;32mbuild successful\033[m"
-	/bin/echo ""
-} } } } }
+
+(
+	[ -d $TRELLIS_LIB ] || TRELLIS_LIB="$PREFIX/lib64/trellis"
+	cd nextpnr
+	cmake -DICEBOX_ROOT="$ICEBOX" -DTRELLIS_ROOT="$TRELLIS" -DTRELLIS_LIBDIR="$TRELLIS_LIB" -DCMAKE_INSTALL_PREFIX="$PREFIX" -DARCH=all .
+	make -j "$THREADS" install
+)
+
+/bin/echo ""
+/bin/echo -e "\033[1;32mbuild successful\033[m"
+/bin/echo ""
 

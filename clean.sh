@@ -6,7 +6,7 @@ for EACH in icestorm arachne-pnr yosys prjtrellis prjtrellis/database nextpnr; d
 	git reset HEAD --hard
 	cd -
 done;
-git clean -fdx
+git clean -dfx
 git reset HEAD --hard
 git submodule init
 git submodule update

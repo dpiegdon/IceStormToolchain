@@ -4,7 +4,7 @@
 missing=0
 
 for EACH in	make automake gcc g++ clang bison flex gawk git \
-		hg dot xdot pkg-config python python3; do
+		hg dot xdot pkg-config python3; do
 	which $EACH > /dev/null 2>&1 || {
 		/bin/echo -e "\033[1;31myou need to install tool: $EACH\033[m"
 		missing=$((missing+1))
